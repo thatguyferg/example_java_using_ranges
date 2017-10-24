@@ -1,0 +1,5 @@
+bazel-bin
+bazel-genfiles
+bazel-example_java_using_ranges
+bazel-out
+bazel-testlogs
