@@ -9,6 +9,8 @@ import org.junit.rules.ExpectedException;
 import com.google.common.collect.Range;
 import java.time.LocalDateTime;
 
+import java.time.format.DateTimeParseException;
+
 public class DateRangeTest {
   @Rule
   public ExpectedException thrown = ExpectedException.none();
@@ -45,5 +47,14 @@ public class DateRangeTest {
     Range<LocalDateTime> range = dateRange
       .makeDateRange("2007-12-07T10:00:00",
                      "2007-12-03T10:00:01");
+  }
+
+  @Test
+  public void should_raiseExceptionWithGarbageStrings(){
+    DateRange dateRange = new DateRange();
+
+    thrown.expect(DateTimeParseException.class);
+
+    dateRange.makeDateRange("wowee","doggos");
   }
 }
